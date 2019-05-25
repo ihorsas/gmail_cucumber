@@ -9,8 +9,7 @@ import org.testng.annotations.Test;
 
 @CucumberOptions(
         features = "src/test/resources/features",
-        glue = {"stepdefs"},
-        tags = {"~@Ignore"})
+        glue = {"stepdefs"})
 public class TestRunner {
     private TestNGCucumberRunner testNGCucumberRunner;
 
@@ -19,7 +18,7 @@ public class TestRunner {
         testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
     }
 
-    @Test(groups = "cucumber", description = "Runs Cucumber Feature", dataProvider = "features")
+    @Test(dataProvider = "features")
     public void feature(CucumberFeatureWrapper cucumberFeature) {
         testNGCucumberRunner.runCucumber(cucumberFeature.getCucumberFeature());
     }
@@ -31,7 +30,6 @@ public class TestRunner {
 
     @AfterClass(alwaysRun = true)
     public void tearDownClass() {
-        DriverProvider.getDriver().quit();
         testNGCucumberRunner.finish();
     }
 }
