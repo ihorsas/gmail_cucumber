@@ -1,0 +1,40 @@
+configuration:
+  packages: "com.igor"
+  name: Log4j2_Config
+
+  Properties:
+    property:
+      name: log_path
+      value: "logs"
+
+  Appenders:
+    Console:
+      name: Console_Appender
+      PatternLayout:
+        Pattern: "%highlight{%-5level}{FATAL=bg_red} %highlight{%msg THREAD: %tid} %xEx{short}%n"
+
+    File:
+      - name: File_Appender
+        fileName: logs/File_Appender.log
+        PatternLayout:
+          Pattern: "%highlight{%-5level}{FATAL=bg_red} %style{%date{yyyy-MM-dd
+                             HH:mm:ss.SSS}}{blue} %class{1}:%L - %highlight{%msg THREAD: %tid} %xEx{short}%n"
+
+  Loggers:
+
+    Root:
+      level: all
+      AppenderRef:
+        - ref: Console_Appender
+        - ref: File_Appender
+
+
+    Logger:
+      - name: com.igor.view.View
+        additivity: false
+        level: trace
+        AppenderRef:
+          - ref: File_Appender
+            level: info
+          - ref: Console_Appender
+            level: info
