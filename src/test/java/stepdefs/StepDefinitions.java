@@ -2,6 +2,7 @@ package stepdefs;
 
 import com.igor.business.LogInBO;
 import com.igor.business.MessageBO;
+import com.igor.model.Letter;
 import com.igor.utils.provider.DriverProvider;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -19,13 +20,11 @@ import static com.igor.utils.parser.JsonParser.*;
 public class StepDefinitions {
     private LogInBO logInBO;
     private MessageBO messageBO;
-    private String title;
-    private String message = getMessage();
+    private Letter letter;
 
     public StepDefinitions(){
         logInBO = new LogInBO();
         messageBO = new MessageBO();
-        title = UUID.randomUUID().toString();
     }
     @When("^I fill username \"([^\"]*)\" and password \"([^\"]*)\"$")
     public void iFillUsernameAndPassword(String arg0, String arg1) {
@@ -48,18 +47,20 @@ public class StepDefinitions {
         Assert.assertTrue(messageBO.isAlertWidgetVisible(), "Alert dialog appeared");
     }
 
-    @And("^I correct receiver with \"([^\"]*)\"$")
-    public void iCorrectReceiverWith(String arg0) {
-        messageBO.correctReceiver(arg0);
+    @When("^I send letter with receiver, topic, message$")
+    public void iSendLetterWithReceiverTitleMessage() {
+        letter = new Letter(getIncorrectReceiver(), UUID.randomUUID().toString(), getMessage());
+        messageBO.fillFieldsForMessage(letter);
     }
 
-    @When("^I send letter with receiver, title, message$")
-    public void iSendLetterWithReceiverTitleMessage() {
-        messageBO.fillFieldsForMessage(getIncorrectReceiver(), title, message);
+    @And("^I correct receiver with \"([^\"]*)\"$")
+    public void iCorrectReceiverWith(String arg0) {
+        letter.setReceiver(arg0);
+        messageBO.correctReceiver(arg0);
     }
 
     @Then("^letter with title should be in sent$")
     public void letterWithTitleShouldBeInSent() {
-        Assert.assertTrue(messageBO.isLetterSent(title), "Letter was sent successfully");
+        Assert.assertTrue(messageBO.isLetterSent(letter), "Letter was sent successfully");
     }
 }

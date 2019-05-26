@@ -7,10 +7,10 @@ Feature: Send Letter
   Scenario Outline: : Successful login
     When I fill username "<username>" and password "<password>"
     Then I am on the "inbox" page
-    When I send letter with receiver, title, message
+    When I send letter with receiver, topic, message
     And I click on Send button
     Then alert dialog appear
-    When I correct receiver with "vsydoriak99@gmail.com "
+    When I correct receiver with "a.lyabah@checkio.org"
     And I click on Send button
     Then letter with title should be in sent
 

@@ -1,5 +1,6 @@
 package com.igor.business;
 
+import com.igor.model.Letter;
 import com.igor.page.MainPage;
 import com.igor.page.SentPage;
 import com.igor.page.widget.AlertDialogWidget;
@@ -25,15 +26,15 @@ public class MessageBO {
         sendingMessageDialogWidget = new SendingMessageDialogWidget();
     }
 
-    public void fillFieldsForMessage(String receiver, String topic, String message){
+    public void fillFieldsForMessage(Letter letter){
         LOGGER.info("Opening new message widget");
         mainPage.clickToComposeButton();
         LOGGER.info("set receiver");
-        newMessageWidget.setReceiverField(receiver);
+        newMessageWidget.setReceiverField(letter.getReceiver());
         LOGGER.info("set title");
-        newMessageWidget.setTitleField(topic);
+        newMessageWidget.setTitleField(letter.getTopic());
         LOGGER.info("set message");
-        newMessageWidget.setMessageField(message);
+        newMessageWidget.setMessageField(letter.getMessage());
     }
 
     public void correctReceiver(String receiver){
@@ -55,12 +56,13 @@ public class MessageBO {
         return alertDialogWidget.alertDialogIsEnable();
     }
 
-    public boolean isLetterSent(String topic){
+    public boolean isLetterSent(Letter letter){
         LOGGER.info("waiting while sending message dialog widget is active");
         sendingMessageDialogWidget.waitWhileMessageSending();
         LOGGER.info("opening sent page");
         mainPage.goToSentPage();
         LOGGER.info("checking sent page");
-        return sentPage.getLetter().equals(topic);
+        sentPage.getSentLetter();
+        return sentPage.getSentLetter().contains(letter);
     }
 }
