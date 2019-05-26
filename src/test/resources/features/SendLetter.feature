@@ -1,8 +1,8 @@
 @LoginProfile
 Feature: Send Letter
-  As an employee of the company
-  I want to login my employee profile using my credentials
-  In order to collaborate with my colleagues
+  I want to log in
+  and try to send letter to incorrect receiver
+  correct receiver and try to send again
 
   Scenario Outline: : Successful login
     When I fill username "<username>" and password "<password>"

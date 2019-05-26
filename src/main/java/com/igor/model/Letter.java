@@ -35,12 +35,11 @@ public class Letter {
         if (!(o instanceof Letter)) return false;
         Letter letter = (Letter) o;
         return Objects.equals(getReceiver(), letter.getReceiver()) &&
-                Objects.equals(getTopic(), letter.getTopic()) &&
-                Objects.equals(getMessage(), letter.getMessage());
+                Objects.equals(getTopic(), letter.getTopic());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getReceiver(), getTopic(), getMessage());
+        return Objects.hash(getReceiver(), getTopic());
     }
 }

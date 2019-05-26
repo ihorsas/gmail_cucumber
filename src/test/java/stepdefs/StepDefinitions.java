@@ -5,9 +5,10 @@ import com.igor.business.MessageBO;
 import com.igor.model.Letter;
 import com.igor.utils.provider.DriverProvider;
 import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -22,6 +23,7 @@ public class StepDefinitions {
     private MessageBO messageBO;
     private Letter letter;
 
+    private Logger logger = LogManager.getLogger(StepDefinitions.class);
     public StepDefinitions(){
         logInBO = new LogInBO();
         messageBO = new MessageBO();
@@ -62,5 +64,6 @@ public class StepDefinitions {
     @Then("^letter with title should be in sent$")
     public void letterWithTitleShouldBeInSent() {
         Assert.assertTrue(messageBO.isLetterSent(letter), "Letter was sent successfully");
+        logger.info("Test passed");
     }
 }

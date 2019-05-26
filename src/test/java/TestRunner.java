@@ -1,15 +1,14 @@
+import com.igor.listener.FailureLister;
 import com.igor.utils.provider.DriverProvider;
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.TestNGCucumberRunner;
 import cucumber.api.testng.CucumberFeatureWrapper;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = {"stepdefs"})
+@Listeners(FailureLister.class)
 public class TestRunner {
     private TestNGCucumberRunner testNGCucumberRunner;
 

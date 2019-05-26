@@ -4,27 +4,28 @@ import com.igor.model.Letter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SentPage extends BasePage{
     @FindBy(xpath = "//div[@role='main']//tbody/tr")
     private List<WebElement> sentLetters;
 
-    public List<Letter> getSentLetter() {
-        List<Letter> letters = new ArrayList<>();
-        String receiver, topic, message;
-        for(WebElement element : sentLetters) {
-            WebElement receiverWE = element.findElement(By.xpath("./td[5]/div[2]/span[@email]"));
-            WebElement topicWE = element.findElement(By.xpath(".//span[@class='bog']"));
-            WebElement messageWE = topicWE.findElement(By.xpath("./../../span"));
-            receiver = receiverWE.getAttribute("email");
-            topic = topicWE.getText();
-            message = messageWE.getText().replace("\n", "").replace("-", "").trim();
-            letters.add(new Letter(receiver, topic, message));
-        }
-        return letters;
+    public List<Letter> getSentLetters() {
+        return sentLetters
+                .stream()
+                .map(this::getLetterFromElement)
+                .collect(Collectors.toList());
+    }
+
+    private Letter getLetterFromElement(WebElement element){
+        WebElement receiverWE = element.findElement(By.xpath("./td[5]/div[2]/span[@email]"));
+        WebElement messageWE1 = element.findElement(By.xpath(".//span[@class='bog']/../.."));
+        String receiver = receiverWE.getAttribute("email");
+        String[] mess = messageWE1.getText().split("\n");
+        String topic = mess[0].trim();
+        String message = mess.length == 3 ? mess[2].trim() : "";
+        return new Letter(receiver, topic, message);
     }
 }
 

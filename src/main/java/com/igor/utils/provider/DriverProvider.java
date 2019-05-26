@@ -38,7 +38,7 @@ public class DriverProvider {
         DRIVER_POOL.get().manage().timeouts().implicitlyWait(IMPLICIT_WAIT, TimeUnit.SECONDS);
         DRIVER_POOL.get().manage().timeouts().pageLoadTimeout(EXPLICIT_WAIT, TimeUnit.SECONDS);
         DRIVER_POOL.get().manage().timeouts().setScriptTimeout(EXPLICIT_WAIT, TimeUnit.SECONDS);
-        DRIVER_POOL.get().manage().window().fullscreen();
+//        DRIVER_POOL.get().manage().window().fullscreen();
     }
 
     public static void quit() {

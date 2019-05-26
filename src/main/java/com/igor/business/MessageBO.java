@@ -62,7 +62,6 @@ public class MessageBO {
         LOGGER.info("opening sent page");
         mainPage.goToSentPage();
         LOGGER.info("checking sent page");
-        sentPage.getSentLetter();
-        return sentPage.getSentLetter().contains(letter);
+        return sentPage.getSentLetters().contains(letter);
     }
 }
