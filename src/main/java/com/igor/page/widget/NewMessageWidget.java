@@ -4,7 +4,7 @@ import com.igor.decorator.element.Button;
 import com.igor.decorator.element.Element;
 import com.igor.decorator.element.TextArea;
 import com.igor.page.BasePage;
-import org.openqa.selenium.*;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -33,7 +33,9 @@ public class NewMessageWidget extends BasePage {
         titleField.sendKeys(title);
     }
 
-    public void setMessageField(String message) { messageField.sendKeys(message); }
+    public void setMessageField(String message) {
+        messageField.sendKeys(message);
+    }
 
     public void clickToSendButton() {
         sendButton.safelyClick();

@@ -15,9 +15,9 @@ Feature: Send Letter
     Then letter with title should be in sent
 
     Examples:
-    | username| password |
-    | groot.epam@gmail.com | iamgroot |
-    | paprika0015@gmail.com | 423489123789op |
-    | sonyachanter@gmail.com | sonichka13 |
-    | orest.zhmurkevych.secondary@gmail.com | passwordfortest |
-    | zuckinnyjetsoftpro@gmail.com | jetsoftprohui |
+      | username                              | password        |
+      | groot.epam@gmail.com                  | iamgroot        |
+      | paprika0015@gmail.com                 | 423489123789op  |
+      | sonyachanter@gmail.com                | sonichka13      |
+      | orest.zhmurkevych.secondary@gmail.com | passwordfortest |
+      | zuckinnyjetsoftpro@gmail.com          | jetsoftprohui   |

@@ -11,18 +11,18 @@ public class Button extends Element {
         super(webElement);
     }
 
-    public boolean isClickable(){
+    public boolean isClickable() {
         return webElement.isDisplayed() && webElement.isEnabled();
     }
 
-    public void click(){
+    public void click() {
         webElement.click();
     }
 
-    public void safelyClick(){
-        if(this.isClickable()){
+    public void safelyClick() {
+        if (this.isClickable()) {
             webElement.click();
-        }else{
+        } else {
             (new WebDriverWait(DriverProvider.getDriver(), Constants.EXPLICIT_WAIT)).
                     until(ExpectedConditions.elementToBeClickable(webElement)).click();
         }

@@ -1,9 +1,10 @@
 package com.igor.utils.parser;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.FileReader;
@@ -22,7 +23,7 @@ public class JsonParser {
         }
     }
 
-    public static Object[][] getUsers(){
+    public static Object[][] getUsers() {
         int numberOfUsers = getNumberOfUsers();
         Object[][] objects = new Object[numberOfUsers][];
         for (int i = 0; i < numberOfUsers; i++) {
@@ -31,28 +32,28 @@ public class JsonParser {
         return objects;
     }
 
-    private static String getUserName(int index){
-        return (String) ((JSONArray)((JSONObject)jsonObject.get("users")).get("email_address")).get(index);
+    private static String getUserName(int index) {
+        return (String) ((JSONArray) ((JSONObject) jsonObject.get("users")).get("email_address")).get(index);
     }
 
-    private static int getNumberOfUsers(){
-        return ((JSONArray)((JSONObject)jsonObject.get("users")).get("email_address")).size();
+    private static int getNumberOfUsers() {
+        return ((JSONArray) ((JSONObject) jsonObject.get("users")).get("email_address")).size();
     }
 
-    private static String getPassword(int index){
-        return (String) ((JSONArray)((JSONObject)jsonObject.get("users")).get("passwords")).get(index);
+    private static String getPassword(int index) {
+        return (String) ((JSONArray) ((JSONObject) jsonObject.get("users")).get("passwords")).get(index);
     }
 
-    public static String getIncorrectReceiver(){
-        return (String) ((JSONObject)jsonObject.get("receivers")).get("incorrect_receiver");
+    public static String getIncorrectReceiver() {
+        return (String) ((JSONObject) jsonObject.get("receivers")).get("incorrect_receiver");
     }
 
-    public static String getReceiver(){
-        return (String) ((JSONObject)jsonObject.get("receivers")).get("receiver");
+    public static String getReceiver() {
+        return (String) ((JSONObject) jsonObject.get("receivers")).get("receiver");
     }
 
-    public static String getMessage(){
+    public static String getMessage() {
         JSONArray jsonArray = (JSONArray) jsonObject.get("messages");
-        return (String) jsonArray.get((int)(jsonArray.size()*Math.random()));
+        return (String) jsonArray.get((int) (jsonArray.size() * Math.random()));
     }
 }

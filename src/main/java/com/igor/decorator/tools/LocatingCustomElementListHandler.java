@@ -1,4 +1,5 @@
 package com.igor.decorator.tools;
+
 import com.igor.decorator.element.AbstractElement;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
@@ -15,7 +16,7 @@ public class LocatingCustomElementListHandler
     private final Class<AbstractElement> clazz;
 
     public LocatingCustomElementListHandler(ElementLocator locator,
-                                     Class<AbstractElement> clazz) {
+                                            Class<AbstractElement> clazz) {
         this.locator = locator;
         this.clazz = clazz;
     }

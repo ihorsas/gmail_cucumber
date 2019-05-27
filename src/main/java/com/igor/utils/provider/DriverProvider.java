@@ -21,17 +21,17 @@ public class DriverProvider {
         System.setProperty(NAME, PATH);
     }
 
-    private DriverProvider() { }
+    private DriverProvider() {
+    }
 
-    public static WebDriver getDriver()
-    {
-        if(Objects.isNull(DRIVER_POOL.get())) {
+    public static WebDriver getDriver() {
+        if (Objects.isNull(DRIVER_POOL.get())) {
             initializeDriver();
         }
         return DRIVER_POOL.get();
     }
 
-    private static void initializeDriver(){
+    private static void initializeDriver() {
         ChromeOptions options = new ChromeOptions();
         options.setHeadless(HEADLESS_MODE);
         DRIVER_POOL.set(new ChromeDriver(options));

@@ -8,11 +8,11 @@ public class LogInBO {
     private static final Logger LOGGER = LogManager.getLogger(LogInBO.class);
     private LogInPage logInPage;
 
-    public LogInBO(){
+    public LogInBO() {
         logInPage = new LogInPage();
     }
 
-    public void logIn(String username, String password){
+    public void logIn(String username, String password) {
         LOGGER.info("Set username");
         logInPage.setUsernameAndSubmit(username);
         LOGGER.info("Set password");

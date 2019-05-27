@@ -1,8 +1,7 @@
 import com.igor.listener.FailureLister;
-import com.igor.utils.provider.DriverProvider;
 import cucumber.api.CucumberOptions;
-import cucumber.api.testng.TestNGCucumberRunner;
 import cucumber.api.testng.CucumberFeatureWrapper;
+import cucumber.api.testng.TestNGCucumberRunner;
 import org.testng.annotations.*;
 
 @CucumberOptions(

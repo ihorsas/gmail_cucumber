@@ -11,7 +11,7 @@ public class WrapperFactory {
      * invoke constructor with arguments WebElement
      */
     public static AbstractElement createInstance(Class<AbstractElement> clazz,
-                                          WebElement element) {
+                                                 WebElement element) {
         try {
             return clazz.getConstructor(WebElement.class).
                     newInstance(element);

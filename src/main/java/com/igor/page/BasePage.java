@@ -12,7 +12,7 @@ public abstract class BasePage {
     protected WebDriver driver;
     protected WebDriverWait webDriverWait;
 
-    protected BasePage(){
+    protected BasePage() {
         driver = DriverProvider.getDriver();
         webDriverWait = new WebDriverWait(driver, EXPLICIT_WAIT);
         PageFactory.initElements(new CustomFieldDecorator(driver), this);

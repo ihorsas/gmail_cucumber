@@ -7,7 +7,7 @@ import cucumber.api.java.Before;
 
 public class ServiceHooks {
     @Before
-    public void tearUp(){
+    public void tearUp() {
         DriverProvider.getDriver().get(Property.getProperty("initial_page"));
     }
 

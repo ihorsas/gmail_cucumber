@@ -12,7 +12,7 @@ public class SendingMessageDialogWidget extends BasePage {
     @FindBy(xpath = "//*[@role='alert']//*[@role='link' and @id='link_undo']")
     private Button undoButton;
 
-    public void waitWhileMessageSending(){
+    public void waitWhileMessageSending() {
         (new WebDriverWait(driver, EXPLICIT_WAIT)).until(ExpectedConditions.invisibilityOf(undoButton.getWebElement()));
     }
 }

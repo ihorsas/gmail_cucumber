@@ -18,7 +18,7 @@ public class MessageBO {
     private AlertDialogWidget alertDialogWidget;
     private SendingMessageDialogWidget sendingMessageDialogWidget;
 
-    public MessageBO(){
+    public MessageBO() {
         mainPage = new MainPage();
         sentPage = new SentPage();
         newMessageWidget = new NewMessageWidget();
@@ -26,7 +26,7 @@ public class MessageBO {
         sendingMessageDialogWidget = new SendingMessageDialogWidget();
     }
 
-    public void fillFieldsForMessage(Letter letter){
+    public void fillFieldsForMessage(Letter letter) {
         LOGGER.info("Opening new message widget");
         mainPage.clickToComposeButton();
         LOGGER.info("set receiver");
@@ -37,7 +37,7 @@ public class MessageBO {
         newMessageWidget.setMessageField(letter.getMessage());
     }
 
-    public void correctReceiver(String receiver){
+    public void correctReceiver(String receiver) {
         LOGGER.info("closing alert dialog");
         alertDialogWidget.clickToButtonOk();
         LOGGER.info("deleting incorrect receiver");
@@ -46,17 +46,17 @@ public class MessageBO {
         newMessageWidget.setReceiverField(receiver);
     }
 
-    public void sendMessage(){
+    public void sendMessage() {
         LOGGER.info("sending message");
         newMessageWidget.clickToSendButton();
     }
 
-    public boolean isAlertWidgetVisible(){
+    public boolean isAlertWidgetVisible() {
         LOGGER.info("checking opened alert dialog");
         return alertDialogWidget.alertDialogIsEnable();
     }
 
-    public boolean isLetterSent(Letter letter){
+    public boolean isLetterSent(Letter letter) {
         LOGGER.info("waiting while sending message dialog widget is active");
         sendingMessageDialogWidget.waitWhileMessageSending();
         LOGGER.info("opening sent page");

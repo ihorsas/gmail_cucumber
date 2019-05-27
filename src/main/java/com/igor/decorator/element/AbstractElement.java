@@ -9,5 +9,7 @@ public abstract class AbstractElement {
         this.webElement = webElement;
     }
 
-    public WebElement getWebElement() { return webElement; }
+    public WebElement getWebElement() {
+        return webElement;
+    }
 }

@@ -16,6 +16,7 @@ import java.util.Date;
 
 public class FailureLister implements ITestListener {
     private static final Logger LOGGER = LogManager.getLogger(FailureLister.class);
+
     @Override
     public void onTestFailure(ITestResult result) {
         try {

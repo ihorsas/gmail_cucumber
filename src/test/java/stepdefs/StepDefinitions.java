@@ -16,7 +16,8 @@ import org.testng.Assert;
 import java.util.UUID;
 
 import static com.igor.utils.constant.Constants.EXPLICIT_WAIT;
-import static com.igor.utils.parser.JsonParser.*;
+import static com.igor.utils.parser.JsonParser.getIncorrectReceiver;
+import static com.igor.utils.parser.JsonParser.getMessage;
 
 public class StepDefinitions {
     private LogInBO logInBO;
@@ -24,10 +25,12 @@ public class StepDefinitions {
     private Letter letter;
 
     private Logger logger = LogManager.getLogger(StepDefinitions.class);
-    public StepDefinitions(){
+
+    public StepDefinitions() {
         logInBO = new LogInBO();
         messageBO = new MessageBO();
     }
+
     @When("^I fill username \"([^\"]*)\" and password \"([^\"]*)\"$")
     public void iFillUsernameAndPassword(String arg0, String arg1) {
         logInBO.logIn(arg0, arg1);
