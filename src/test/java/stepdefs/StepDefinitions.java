@@ -2,7 +2,7 @@ package stepdefs;
 
 import com.igor.business.LogInBO;
 import com.igor.business.MessageBO;
-import com.igor.model.Letter;
+import com.igor.model.LetterModel;
 import com.igor.utils.provider.DriverProvider;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -22,7 +22,7 @@ import static com.igor.utils.parser.JsonParser.getMessage;
 public class StepDefinitions {
     private LogInBO logInBO;
     private MessageBO messageBO;
-    private Letter letter;
+    private LetterModel letterModel;
 
     private Logger logger = LogManager.getLogger(StepDefinitions.class);
 
@@ -54,19 +54,19 @@ public class StepDefinitions {
 
     @When("^I send letter with receiver, topic, message$")
     public void iSendLetterWithReceiverTitleMessage() {
-        letter = new Letter(getIncorrectReceiver(), UUID.randomUUID().toString(), getMessage());
-        messageBO.fillFieldsForMessage(letter);
+        letterModel = new LetterModel(getIncorrectReceiver(), UUID.randomUUID().toString(), getMessage());
+        messageBO.fillFieldsForMessage(letterModel);
     }
 
     @And("^I correct receiver with \"([^\"]*)\"$")
     public void iCorrectReceiverWith(String arg0) {
-        letter.setReceiver(arg0);
+        letterModel.setReceiver(arg0);
         messageBO.correctReceiver(arg0);
     }
 
     @Then("^letter with title should be in sent$")
     public void letterWithTitleShouldBeInSent() {
-        Assert.assertTrue(messageBO.isLetterSent(letter), "Letter was sent successfully");
+        Assert.assertTrue(messageBO.isLetterSent(letterModel), "LetterModel was sent successfully");
         logger.info("Test passed");
     }
 }

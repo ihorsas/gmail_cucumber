@@ -2,12 +2,12 @@ package com.igor.model;
 
 import java.util.Objects;
 
-public class Letter {
+public class LetterModel {
     private String receiver;
     private String topic;
     private String message;
 
-    public Letter(String receiver, String topic, String message) {
+    public LetterModel(String receiver, String topic, String message) {
         this.receiver = receiver;
         this.topic = topic;
         this.message = message;
@@ -32,10 +32,10 @@ public class Letter {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Letter)) return false;
-        Letter letter = (Letter) o;
-        return Objects.equals(getReceiver(), letter.getReceiver()) &&
-                Objects.equals(getTopic(), letter.getTopic());
+        if (!(o instanceof LetterModel)) return false;
+        LetterModel letterModel = (LetterModel) o;
+        return Objects.equals(getReceiver(), letterModel.getReceiver()) &&
+                Objects.equals(getTopic(), letterModel.getTopic());
     }
 
     @Override
